@@ -9,6 +9,7 @@ COPY rootfs /
 RUN apk add --no-cache \
     coreutils \
     transmission-daemon \
+    transmission-cli \
     openvpn \
     nginx
 

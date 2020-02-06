@@ -1,4 +1,4 @@
-# Warning! This is fork from original addon for make it usable.
+# Warning! This fork is my attempt to get the addon working on my NUC, since the install currently fails. Use at own risk
 
 # Transmission addon for Hass.io
 
@@ -11,7 +11,7 @@ The torrent client for Hass.io with OpenVPN support.
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
-1. Add https://github.com/OXOTH1K/hassio-addon-transmission.git to your Hass.io instance as a repository.
+1. Add https://github.com/plamola/hassio-addon-transmission.git to your Hass.io instance as a repository.
 1. Install the "Transmission" add-on.
 1. Start the "Transmission" add-on.
 1. Check the logs of the "Tranmission" to see if everything went well.

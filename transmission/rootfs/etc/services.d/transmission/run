@@ -15,7 +15,7 @@ if bashio::config.has_value 'networkdisks'; then
         bashio::log.info "Mount ${disk}"
         mkdir -p /$disk && \
             mount -t cifs -o username=$CIFS_USERNAME,password=$CIFS_PASSWORD $disk /$disk && \
-            bashio::log.info "Success!"   
+            bashio::log.info "Success! Mounted to: ${disk}"   
     done || \
     bashio::log.warning "Protection mode is ON. Unable to mount external drivers!"
 fi

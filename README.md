@@ -1,4 +1,7 @@
-# Warning! This fork is my attempt to get the addon working on my NUC, since the install currently fails. Use at own risk
+# This is a fork that supports mounting network drives through Samba Share
+
+If you want to mount an USB drive on Hass.io and share it on the network, check out [Samba NAS Add-On by dianlight](https://github.com/dianlight/hassio-addons/tree/master/sambanas)
+<span style="color:red">PROTECTION MODE NEED TO DISABLED FOR NETWORK DRIVES TO WORK</span>
 
 # Transmission addon for Hass.io
 
@@ -11,7 +14,7 @@ The torrent client for Hass.io with OpenVPN support.
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
-1. Add https://github.com/plamola/hassio-addon-transmission.git to your Hass.io instance as a repository.
+1. Add https://github.com/marciogranzotto/hassio-addon-transmission.git to your Hass.io instance as a repository.
 1. Install the "Transmission" add-on.
 1. Start the "Transmission" add-on.
 1. Check the logs of the "Tranmission" to see if everything went well.
@@ -23,17 +26,19 @@ comparison to installing any other Hass.io add-on.
 
 Transmission add-on configuration:
 
-```json
-{
-  "log_level": "info",
-  "authentication_required": false,
-  "username": "",
-  "password": "",
-  "openvpn_enabled": false,
-  "openvpn_config": "",
-  "openvpn_username": "",
-  "openvpn_password": ""
-}
+```yaml
+log_level: info
+authentication_required: false
+username: 'your_username'
+password: 'your_password'
+openvpn_enabled: false
+openvpn_config: ''
+openvpn_username: ''
+openvpn_password: ''
+networkdisks:
+  - //serverip/folder
+cifsusername: homeassistant
+cifspassword: password
 ```
 
 ### Option: `log_level`
@@ -81,6 +86,19 @@ Your OpenVPN username.
 ### Option: `openvpn_password`
 
 Your OpenVPN password.
+
+### Option: `networkdisks`  <span style="color:red">PROTECTION MODE NEED TO DISABLED TO WORK</span>
+
+Is the list of networks share to mount at boot. The mounted driver is on `/<SERVER>/<SHARE>` directory.
+
+#### Option: `cifsusername` 
+
+The username to use to mount the network shares
+
+#### Option: `cifspassword` 
+
+The password used to mount the networks shares
+
 
 ## Embedding into Home Assistant
 

@@ -11,7 +11,8 @@ RUN apk add --no-cache \
     transmission-daemon \
     transmission-cli \
     openvpn \
-    nginx
+    nginx \
+    cifs-utils
 
 # Small hack needed for ingress support
 #

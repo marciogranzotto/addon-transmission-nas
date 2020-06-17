@@ -3,9 +3,9 @@
 If you want to mount an USB drive on Hass.io and share it on the network, check out [Samba NAS Add-On by dianlight](https://github.com/dianlight/hassio-addons/tree/master/sambanas)
 <span style="color:red">PROTECTION MODE NEED TO DISABLED FOR NETWORK DRIVES TO WORK</span>
 
-# Transmission addon for Hass.io
+# Transmission NAS addon for Hass.io
 
-The torrent client for Hass.io with OpenVPN support.
+The torrent client for Hass.io with OpenVPN and Samba Share support.
 
 ![Logo](transmission/logo.png?raw=true "Logo")
 
@@ -15,9 +15,9 @@ The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
 1. Add https://github.com/marciogranzotto/hassio-addon-transmission.git to your Hass.io instance as a repository.
-1. Install the "Transmission" add-on.
-1. Start the "Transmission" add-on.
-1. Check the logs of the "Tranmission" to see if everything went well.
+1. Install the "Transmission NAS" add-on.
+1. Start the "Transmission NAS" add-on.
+1. Check the logs of the "Tranmission NAS" to see if everything went well.
 1. Open the web-ui
 
 ## Configuration
@@ -37,8 +37,8 @@ openvpn_username: ''
 openvpn_password: ''
 networkdisks:
   - //serverip/folder
-cifsusername: homeassistant
-cifspassword: password
+cifsusername: 'your samba user'
+cifspassword: 'password'
 ```
 
 ### Option: `log_level`
@@ -107,11 +107,7 @@ Here is an example configuration:
 
 ```yaml
 transmission:
-  host: f6fddefc-transmission
-  monitored_conditions:
-    - download_speed
-    - upload_speed
-    - active_torrents
+  host: f6fddefc-transmission-nas
 ```
 
 If you want, you can add an icon to the sidebar by toggling *Show in Sidebar* as well.

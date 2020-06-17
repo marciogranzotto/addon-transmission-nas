@@ -1,14 +1,14 @@
 {
-    "name": "Transmission - SMB Share",
+    "name": "Transmission NAS",
     "version": "1.0.0",
-    "slug": "transmission-smb-share",
+    "slug": "transmission-nas",
     "description": "The torrent client for Hass.io with OpenVPN and Samba Share support",
     "url": "https://github.com/marciogranzotto/hassio-addon-transmission",
     "webui": "http://[HOST]:[PORT:9091]/transmission/web/",
     "startup": "services",
     "ingress": "true",
     "ingress_port": 8099,
-    "panel_icon": "mdi:progress-download",
+    "panel_icon": "mdi:car-shift-pattern",
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "map": [
       "config:rw",

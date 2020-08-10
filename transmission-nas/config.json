@@ -5,6 +5,7 @@
     "description": "The torrent client for Home Assistant with OpenVPN and Samba Share support",
     "url": "https://github.com/marciogranzotto/addon-transmission-nas",
     "webui": "http://[HOST]:[PORT:9091]/transmission/web/",
+    "image": "marciogranzotto/addon-transmission-nas-{arch}",
     "startup": "services",
     "ingress": "true",
     "ingress_port": 8099,

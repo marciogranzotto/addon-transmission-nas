@@ -1,25 +1,40 @@
 # This is a fork that supports mounting network drives through Samba Share
 
+[![GitHub Release][releases-shield]][releases]
+[![License][license-shield]](LICENSE.md)
+
+![Supports armhf Architecture][armhf-shield]
+![Supports armv7 Architecture][armv7-shield]
+![Supports aarch64 Architecture][aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
+![Supports i386 Architecture][i386-shield]
+
+![Project Maintenance][maintenance-shield]
+[![GitHub Activity][commits-shield]][commits]
+
+[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
+
 If you want to mount an USB drive on Home Assistant and share it on the network, check out [Samba NAS Add-On by dianlight](https://github.com/dianlight/hassio-addons/tree/master/sambanas)
 
-**PROTECTION MODE NEED TO DISABLED FOR NETWORK DRIVES TO WORK**
+**PROTECTION MODE NEEDS TO BE DISABLED FOR NETWORK DRIVES TO WORK**
 
 # Transmission NAS addon for Home Assistant
 
 The torrent client for Home Assistant with OpenVPN and Samba Share support.
 
-![Logo](transmission/logo.png?raw=true "Logo")
+![Logo](transmission-nas/logo.png?raw=true "Logo")
 
 ## Installation
 
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Home Assistant add-on.
 
-1. Add https://github.com/marciogranzotto/addon-transmission-nas.git to your Home Assistant instance as a repository.
-1. Install the "Transmission NAS" add-on.
-1. Start the "Transmission NAS" add-on.
-1. Check the logs of the "Tranmission NAS" to see if everything went well.
-1. Open the web-ui
+1. [Add our Home Assistant add-ons repository][repository] to your Home Assistant instance.
+1. Install the "Transmission NA" add-on.
+1. Change the configuration files with the required values.
+1. Start the "Transmission NA" add-on
+1. Check the logs of the "Transmission NA" add-on to see if everything went well.
+1. Click "OPEN WEB UI" to open the Transmission NA web interface.
 
 ## Configuration
 
@@ -88,7 +103,9 @@ Your OpenVPN username.
 
 Your OpenVPN password.
 
-### Option: `networkdisks`  <span style="color:red">PROTECTION MODE NEED TO DISABLED TO WORK</span>
+### Option: `networkdisks`  
+
+**PROTECTION MODE NEEDS TO BE DISABLED TO WORK**
 
 Is the list of networks share to mount at boot. The mounted driver is on `/<SERVER>/<SHARE>` directory.
 
@@ -149,3 +166,28 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
+[anchore-shield]: https://anchore.io/service/badges/image/67d1185473090e99d5ac5e1bb4d1aa2295117a9bd3d7abbf8cd8a71e331c8388
+[anchore]: https://anchore.io/image/dockerhub/marciogranzotto%2Funifi%3Alatest
+[armhf-shield]:  https://img.shields.io/badge/armhf-yes-green.svg
+[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
+[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
+[buymeacoffee]: https://www.buymeacoffee.com/automarcio
+[commits-shield]: https://img.shields.io/github/commit-activity/y/marciogranzotto/addon-transmission-nas.svg
+[commits]: https://github.com/marciogranzotto/addon-transmission-nas/commits/master
+[contributors]: https://github.com/marciogranzotto/addon-transmission-nas/graphs/contributors
+[dockerhub]: https://hub.docker.com/r/marciogranzotto/transmission-nas
+[home-assistant]: https://home-assistant.io
+[issue]: https://github.com/marciogranzotto/addon-transmission-nas/issues
+[keepchangelog]: http://keepachangelog.com/en/1.0.0/
+[license-shield]: https://img.shields.io/github/license/marciogranzotto/addon-transmission-nas.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2020.svg
+[releases-shield]: https://img.shields.io/github/release/marciogranzotto/addon-transmission-nas.svg
+[releases]: https://github.com/marciogranzotto/addon-transmission-nas/releases
+[repository]: https://github.com/marciogranzotto/addons-repository
+[cgm-remote-monitor]: https://github.com/transmission-nas/cgm-remote-monitor
+[marciogranzotto]: https://github.com/marciogranzotto

@@ -125,7 +125,7 @@ Here is an example configuration:
 
 ```yaml
 transmission:
-  host: f6fddefc-transmission-nas
+  host: 1dd81675_transmission-nas
 ```
 
 If you want, you can add an icon to the sidebar by toggling *Show in Sidebar* as well.

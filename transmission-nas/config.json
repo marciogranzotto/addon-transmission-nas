@@ -2,9 +2,10 @@
     "name": "Transmission NAS",
     "version": "1.0.0",
     "slug": "transmission-nas",
-    "description": "The torrent client for Hass.io with OpenVPN and Samba Share support",
-    "url": "https://github.com/marciogranzotto/hassio-addon-transmission",
+    "description": "The torrent client for Home Assistant with OpenVPN and Samba Share support",
+    "url": "https://github.com/marciogranzotto/addon-transmission-nas",
     "webui": "http://[HOST]:[PORT:9091]/transmission/web/",
+    "image": "marciogranzotto/addon-transmission-nas-{arch}",
     "startup": "services",
     "ingress": "true",
     "ingress_port": 8099,
@@ -22,7 +23,7 @@
       "51413/udp": 51413
     },
     "ports_description": {
-      "9091/tcp": "Web UI port (Not required for Hass.io Ingress)",
+      "9091/tcp": "Web UI port (Not required for Ingress)",
       "51413/tcp": "Peer port (setup port forwarding to this port)",
       "51413/udp": "Peer port (setup port forwarding to this port)"
     },

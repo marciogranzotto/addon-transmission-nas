@@ -7,12 +7,12 @@ COPY rootfs /
 
 # Setup base
 RUN apk add --no-cache \
-    coreutils \
-    transmission-daemon \
-    transmission-cli \
-    openvpn \
-    nginx \
-    cifs-utils
+    coreutils=8.31-r0 \
+    transmission-daemon=2.94-r3 \
+    transmission-cli=2.94-r3 \
+    openvpn=2.4.8-r1 \
+    nginx=1.16.1-r6 \
+    cifs-utils=6.9-r1
 
 # Small hack needed for ingress support
 #
@@ -45,18 +45,18 @@ ARG BUILD_VERSION
 
 # Labels
 LABEL \
-    io.hass.name="Transmission" \
-    io.hass.description="The torrent client for Hass.io with OpenVPN support" \
+    io.hass.name="Transmission NAS" \
+    io.hass.description="The torrent client for Home Assistant with OpenVPN and Samba Share support" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="Pierrick Rouxel <pierrickrouxel@addons.community>" \
-    org.label-schema.description="The torrent client for Hass.io" \
-    org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name="Transmission" \
-    org.label-schema.schema-version="1.0" \
-    org.label-schema.url="https://github.com/pierrickrouxel" \
-    org.label-schema.usage="https://github.com/pierrickrouxel/hassio-addon-transmission/tree/master/README.md" \
-    org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/pierrickrouxel" \
-    org.label-schema.vendor="Community Hass.io Addons"
+    maintainer="Marcio Granzotto <contato@automarcio.com.br>" \
+    org.opencontainers.image.title="Transmission" \
+    org.opencontainers.image.description="The torrent client for Home Assistant with OpenVPN and Samba Share support" \
+    org.opencontainers.image.vendor="Marcio Granzotto" \
+    org.opencontainers.image.authors="Marcio Granzotto <contato@automarcio.com.br>" \
+    org.opencontainers.image.source="https://github.com/marciogranzotto/addon-transmission-nas" \
+    org.opencontainers.image.documentation="https://github.com/marciogranzotto/addon-transmission-nas/blob/master/README.md" \
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.revision=${BUILD_REF} \
+    org.opencontainers.image.version=${BUILD_VERSION}

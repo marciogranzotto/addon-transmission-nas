@@ -1,20 +1,21 @@
 # This is a fork that supports mounting network drives through Samba Share
 
-If you want to mount an USB drive on Hass.io and share it on the network, check out [Samba NAS Add-On by dianlight](https://github.com/dianlight/hassio-addons/tree/master/sambanas)
-<span style="color:red">PROTECTION MODE NEED TO DISABLED FOR NETWORK DRIVES TO WORK</span>
+If you want to mount an USB drive on Home Assistant and share it on the network, check out [Samba NAS Add-On by dianlight](https://github.com/dianlight/hassio-addons/tree/master/sambanas)
 
-# Transmission NAS addon for Hass.io
+**PROTECTION MODE NEED TO DISABLED FOR NETWORK DRIVES TO WORK**
 
-The torrent client for Hass.io with OpenVPN and Samba Share support.
+# Transmission NAS addon for Home Assistant
+
+The torrent client for Home Assistant with OpenVPN and Samba Share support.
 
 ![Logo](transmission/logo.png?raw=true "Logo")
 
 ## Installation
 
 The installation of this add-on is pretty straightforward and not different in
-comparison to installing any other Hass.io add-on.
+comparison to installing any other Home Assistant add-on.
 
-1. Add https://github.com/marciogranzotto/hassio-addon-transmission.git to your Hass.io instance as a repository.
+1. Add https://github.com/marciogranzotto/addon-transmission-nas.git to your Home Assistant instance as a repository.
 1. Install the "Transmission NAS" add-on.
 1. Start the "Transmission NAS" add-on.
 1. Check the logs of the "Tranmission NAS" to see if everything went well.

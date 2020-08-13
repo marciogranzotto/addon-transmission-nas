@@ -1,8 +1,8 @@
 name: Docker build and publish
 
 on:
-    release:
-      types: [published]
+  release:
+    types: [published]
 
 jobs:
   build-amd64:
@@ -10,13 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get version
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        run: echo ::set-env name=VERSION::${TAG_NAME#v}
       - name: Patch files
         uses: onlyutkarsh/patch-files-action@v1.0.1
         with:
           files: |
             transmission-nas/config.json
           patch-syntax: |
-            = /version => "${{ github.event.release.tag_name }}"
+            = /version => "${{ env.VERSION }}"
       - name: publish amd64 docker files
         if: github.event_name != 'pull_request'
         run: docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker -v "$(pwd)":/data homeassistant/amd64-builder	-t transmission-nas --amd64 --release-tag --docker-user marciogranzotto --docker-password ${{ secrets.DOCKER_PASSWORD }}
@@ -25,13 +29,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get version
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        run: echo ::set-env name=VERSION::${TAG_NAME#v}
       - name: Patch files
         uses: onlyutkarsh/patch-files-action@v1.0.1
         with:
           files: |
             transmission-nas/config.json
           patch-syntax: |
-            = /version => "${{ github.event.release.tag_name }}"
+            = /version => "${{ env.VERSION }}"
       - name: publish armv7 docker files
         if: github.event_name != 'pull_request'
         run: docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker -v "$(pwd)":/data homeassistant/amd64-builder	-t transmission-nas --armv7 --release-tag --docker-user marciogranzotto --docker-password ${{ secrets.DOCKER_PASSWORD }}
@@ -40,14 +48,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get version
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        run: echo ::set-env name=VERSION::${TAG_NAME#v}
       - name: Patch files
         uses: onlyutkarsh/patch-files-action@v1.0.1
         with:
           files: |
             transmission-nas/config.json
           patch-syntax: |
-            = /version => "${{ github.event.release.tag_name }}"
-      
+            = /version => "${{ env.VERSION }}"
+
       - name: publish aarch64 docker files
         if: github.event_name != 'pull_request'
         run: docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker -v "$(pwd)":/data homeassistant/amd64-builder	-t transmission-nas --aarch64 --release-tag --docker-user marciogranzotto --docker-password ${{ secrets.DOCKER_PASSWORD }}
@@ -56,14 +68,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get version
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        run: echo ::set-env name=VERSION::${TAG_NAME#v}
       - name: Patch files
         uses: onlyutkarsh/patch-files-action@v1.0.1
         with:
           files: |
             transmission-nas/config.json
           patch-syntax: |
-            = /version => "${{ github.event.release.tag_name }}"
-      
+            = /version => "${{ env.VERSION }}"
+
       - name: publish i386 docker files
         if: github.event_name != 'pull_request'
         run: docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker -v "$(pwd)":/data homeassistant/amd64-builder	-t transmission-nas --i386 --release-tag --docker-user marciogranzotto --docker-password ${{ secrets.DOCKER_PASSWORD }}
@@ -72,14 +88,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get version
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+        run: echo ::set-env name=VERSION::${TAG_NAME#v}
       - name: Patch files
         uses: onlyutkarsh/patch-files-action@v1.0.1
         with:
           files: |
             transmission-nas/config.json
           patch-syntax: |
-            = /version => "${{ github.event.release.tag_name }}"
-      
+            = /version => "${{ env.VERSION }}"
+
       - name: publish armhf docker files
         if: github.event_name != 'pull_request'
         run: docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker -v "$(pwd)":/data homeassistant/amd64-builder	-t transmission-nas --armhf --release-tag --docker-user marciogranzotto --docker-password ${{ secrets.DOCKER_PASSWORD }}

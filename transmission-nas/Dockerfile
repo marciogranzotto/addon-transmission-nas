@@ -2,24 +2,16 @@ ARG BUILD_FROM
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
-# Copy root filesystem
-COPY rootfs /
-
 # Setup base
-RUN  \
-    apt-get update \
-    # && apt-get install -y software-properties-common \
-    # && add-apt-repository -y ppa:nginx/stable \
-    && apt remove nginx -y \
-    # && apt-get update \
-    && apt-get install -y \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
     nginx-full \
     coreutils \
     transmission-daemon \
     transmission-cli \
     openvpn \
     net-tools \
-    && apt-get -y upgrade cifs-utils \
+    cifs-utils \
     && apt-get -y autoremove \
     && apt-get -y clean \
     \
@@ -27,6 +19,10 @@ RUN  \
         /tmp/* \
         /var/{cache,log}/* \
         /var/lib/apt/lists/*
+
+        
+# Copy root filesystem
+COPY rootfs /
 
 # Small hack needed for ingress support
 #

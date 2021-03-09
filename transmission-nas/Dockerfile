@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:6.0.1
+ARG BUILD_FROM
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -6,13 +6,27 @@ FROM ${BUILD_FROM}
 COPY rootfs /
 
 # Setup base
-RUN apk add --no-cache \
-    coreutils=8.31-r0 \
-    transmission-daemon=2.94-r3 \
-    transmission-cli=2.94-r3 \
-    openvpn=2.4.8-r1 \
-    nginx=1.16.1-r6 \
-    cifs-utils=6.9-r1
+RUN  \
+    apt-get update \
+    # && apt-get install -y software-properties-common \
+    # && add-apt-repository -y ppa:nginx/stable \
+    && apt remove nginx -y \
+    # && apt-get update \
+    && apt-get install -y \
+    nginx-full \
+    coreutils \
+    transmission-daemon \
+    transmission-cli \
+    openvpn \
+    net-tools \
+    && apt-get -y upgrade cifs-utils \
+    && apt-get -y autoremove \
+    && apt-get -y clean \
+    \
+    && rm -fr \
+        /tmp/* \
+        /var/{cache,log}/* \
+        /var/lib/apt/lists/*
 
 # Small hack needed for ingress support
 #

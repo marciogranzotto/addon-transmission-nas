@@ -5,19 +5,26 @@
 bashio::log.info "Starting Transmission..."
 
 # Mount CIFS Share if configured and if Protection Mode is active
+bashio::log.info "Protection Mode is $(bashio::addon.protected)"
+
 if bashio::config.has_value 'networkdisks'; then
     MOREDISKS=$(bashio::config 'networkdisks')
     CIFS_USERNAME=$(bashio::config 'cifsusername')
     CIFS_PASSWORD=$(bashio::config 'cifspassword')
+    if bashio::config.has_value 'cifsversion'; then
+        CIFS_VERSION_ARG=",vers=$(bashio::config 'cifsversion')"
+    else
+        CIFS_VERSION_ARG=""
+    fi
     bashio::log.info "Network Disks mounting.. ${MOREDISKS}" && \
     for disk in $MOREDISKS 
     do
         bashio::log.info "Mount ${disk}"
         mkdir -p /$disk && \
-            mount -t cifs -o username=$CIFS_USERNAME,password=$CIFS_PASSWORD $disk /$disk && \
-            bashio::log.info "Success! Mounted to: ${disk}"   
+            mount -t cifs -o username=$CIFS_USERNAME,password=$CIFS_PASSWORD$CIFS_VERSION_ARG $disk /$disk && \
+            bashio::log.info "Success!"   
     done || \
-    bashio::log.warning "Protection mode is ON. Unable to mount external drivers!"
+    bashio::log.warning "Unable to mount external drivers!"
 fi
 
 if bashio::config.true 'openvpn_enabled'; then

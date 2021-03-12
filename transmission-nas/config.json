@@ -1,6 +1,6 @@
 {
     "name": "Transmission NAS",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "slug": "transmission-nas",
     "description": "The torrent client for Home Assistant with OpenVPN and Samba Share support",
     "url": "https://github.com/marciogranzotto/addon-transmission-nas",
@@ -12,6 +12,7 @@
     "panel_icon": "mdi:car-shift-pattern",
     "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
     "map": [
+      "media:rw",
       "config:rw",
       "share:rw",
       "ssl"
@@ -49,7 +50,8 @@
       "openvpn_password": "",
       "networkdisks": ["<//SERVER/SHARE>"],
       "cifsusername": "<username>",
-      "cifspassword": "<password>"
+      "cifspassword": "<password>",
+      "cifsversion": ""
     },
     "schema": {
       "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
@@ -62,7 +64,8 @@
       "openvpn_password": "str",
       "networkdisks": ["str"],
       "cifsusername": "str",
-      "cifspassword": "str"
+      "cifspassword": "str",
+      "cifsversion": "list(3.0|2.1|2.0|1.0)?"
     },
     "environment": {
       "LOG_FORMAT": "{LEVEL}: {MESSAGE}"

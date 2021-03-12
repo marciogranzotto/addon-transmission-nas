@@ -1,18 +1,19 @@
-ARG BUILD_FROM=hassioaddons/base:6.0.1
+ARG BUILD_FROM
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
-# Copy root filesystem
-COPY rootfs /
-
 # Setup base
 RUN apk add --no-cache \
-    coreutils=8.31-r0 \
-    transmission-daemon=2.94-r3 \
-    transmission-cli=2.94-r3 \
-    openvpn=2.4.8-r1 \
-    nginx=1.16.1-r6 \
-    cifs-utils=6.9-r1
+    coreutils=8.32-r2 \
+    transmission-daemon=3.00-r2 \
+    transmission-cli=3.00-r2 \
+    openvpn=2.5.0-r1 \
+    nginx=1.18.0-r13 \
+    cifs-utils=6.12-r0
+
+        
+# Copy root filesystem
+COPY rootfs /
 
 # Small hack needed for ingress support
 #

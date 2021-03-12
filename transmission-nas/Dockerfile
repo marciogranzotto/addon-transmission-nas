@@ -3,23 +3,13 @@ ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
 # Setup base
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    nginx-full=1.14.0-0ubuntu1.7 \
-    coreutils=8.28-1ubuntu1 \
-    transmission-daemon=2.92-3ubuntu2 \
-    transmission-cli=2.92-3ubuntu2 \
-    openvpn=2.4.4-2ubuntu1.3 \
-    net-tools=1.60+git20161116.90da8a0-1ubuntu1 \
-    cifs-utils=2:6.8-1ubuntu1.1 \
-    && apt-get -y autoremove \
-    && apt-get -y clean \
-    \
-    && rm -fr \
-        /tmp/* \
-        /var/cache/* \
-        /var/logs/* \
-        /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    coreutils=8.32-r2 \
+    transmission-daemon=3.00-r2 \
+    transmission-cli=3.00-r2 \
+    openvpn=2.5.0-r1 \
+    nginx=1.18.0-r13 \
+    cifs-utils=6.12-r0
 
         
 # Copy root filesystem

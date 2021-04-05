@@ -108,7 +108,7 @@ jobs:
     name: Update addons repository
     runs-on: ubuntu-latest
     container:
-      image: hassioaddons/repository-updater:latest
+      image: marciogranzotto/repository-updater:apparmor-support
     steps:
       - name: upload
         run: repository-updater --token ${{ secrets.GIT_TOKEN }} --repository marciogranzotto/addons-repository --addon transmission-nas

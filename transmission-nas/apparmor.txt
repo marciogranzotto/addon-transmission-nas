@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-profile 1dd81675-transmission-nas flags=(attach_disconnected,mediate_deleted) {
+profile transmission-nas flags=(attach_disconnected,mediate_deleted) {
   #include <abstractions/base>
   
   capability,

@@ -20,6 +20,7 @@ if bashio::config.has_value 'networkdisks'; then
     for disk in $MOREDISKS 
     do
         bashio::log.info "Mount ${disk}"
+        bashio::log.debug "mount -t cifs -o username=$CIFS_USERNAME,password=$CIFS_PASSWORD$CIFS_VERSION_ARG $disk /$disk"
         mkdir -p /$disk && \
             mount -t cifs -o username=$CIFS_USERNAME,password=$CIFS_PASSWORD$CIFS_VERSION_ARG $disk /$disk && \
             bashio::log.info "Success!"   

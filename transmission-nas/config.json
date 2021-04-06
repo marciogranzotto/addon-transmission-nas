@@ -31,6 +31,7 @@
     "privileged": [
       "SYS_ADMIN","DAC_READ_SEARCH"
     ],
+    "apparmor": true,
     "full_access": true,
     "hassio_api": true,
     "hassio_role": "default",

@@ -4,14 +4,13 @@ FROM ${BUILD_FROM}
 
 # Setup base
 RUN apk add --no-cache \
-    coreutils=8.32-r2 \
-    transmission-daemon=3.00-r2 \
-    transmission-cli=3.00-r2 \
-    openvpn=2.5.0-r1 \
-    nginx=1.18.0-r13 \
-    cifs-utils=6.12-r0
+    coreutils=9.7-r1 \
+    transmission-daemon=4.0.6-r4 \
+    transmission-cli=4.0.6-r4 \
+    openvpn=2.6.20-r0 \
+    nginx=1.28.3-r0 \
+    cifs-utils=7.3-r0
 
-        
 # Copy root filesystem
 COPY rootfs /
 
@@ -36,7 +35,15 @@ COPY rootfs /
 #
 # This will not work. The sed statement below changes the way the RPC endpoint is determined by keeping the regular endpoint
 # when accessing transmission as usual, but stripping the relative part when using ingress.
-RUN sed -i 's|'"'"'\.\./rpc'"'"'|window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|' /usr/share/transmission/web/javascript/remote.js
+#
+# Transmission 4 bundles the web UI into a single transmission-app.js under public_html/. The bundler may emit
+# the RPC root literal with either single or double quotes, so we handle both. The final grep fails the build
+# loudly if no substitution took effect — without it, an upstream layout change would silently break ingress.
+RUN sed -i \
+        -e "s|'\\.\\./rpc'|window.location.pathname.endsWith(\"/web/\") ? \"../rpc\" : \"rpc\"|g" \
+        -e 's|"\.\./rpc"|window.location.pathname.endsWith("/web/") ? "../rpc" : "rpc"|g' \
+        /usr/share/transmission/public_html/transmission-app.js \
+    && grep -q 'pathname.endsWith("/web/") ? "../rpc" : "rpc"' /usr/share/transmission/public_html/transmission-app.js
 
 # Build arugments
 ARG BUILD_ARCH
